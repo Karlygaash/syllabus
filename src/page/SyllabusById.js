@@ -67,7 +67,7 @@ const SyllabusById = () => {
 
     useEffect(()=>{
         getSyllabusById()
-    }, [])
+    })
     return(
         <div className="container">
             <div className="section__navigation">
@@ -91,8 +91,8 @@ const SyllabusById = () => {
                     <p>Семинарские (практические) занятия - {mainInfo.practiceLessons}</p>
                     <p>СРО - {mainInfo.sro}</p>
                 </div>
-                <h3 className="syllabus_title">Тематическое содержание дисциплины и распределение
-                    часов по видам занятий</h3>
+                <h3 className="syllabus_title">ТЕМАТИЧЕСКОЕ СОДЕРЖАНИЕ ДИСЦИПЛИНЫ И РАСПРЕДЕЛЕНИЕ
+                    ЧАСОВ ПО ВИДАМ ЗАНЯТИЙ</h3>
                 <table>
                     <thead>
                         <tr>
@@ -146,7 +146,7 @@ const SyllabusById = () => {
                 </div>
                 
                 <div className="literature">
-                    <h3 className="syllabus_title">Литература и интернет-ресурсы</h3>
+                    <h3 className="syllabus_title">ЛИТЕРАТУРА И ИНТЕРНЕТ-РЕСУРСЫ</h3>
                     <h4>1. Основная литература</h4>
                     {mainLiterature === null ? "" :
                     mainLiterature.map(e => (

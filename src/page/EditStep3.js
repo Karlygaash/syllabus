@@ -124,7 +124,7 @@ const EditStep3 = () => {
 
     useEffect(()=>{
         getSyllabusById()
-    },[])
+    })
 
     return(
         <div className="container">

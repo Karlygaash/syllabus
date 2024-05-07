@@ -1,8 +1,7 @@
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import PlusIcon from '../images/icons/plusIcon.svg'
+import {useNavigate} from 'react-router-dom';
 import '../styles/Profile.css'
 import Ava from '../images/ava.png'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios'
 import { toast } from "react-toastify"
 

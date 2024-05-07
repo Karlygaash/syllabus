@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react';
-import { toast } from "react-toastify"
 import PlusIcon from '../images/icons/plusIcon.svg'
 import { Link, useNavigate} from 'react-router-dom';
 import EditIcon from '../images/icons/editIcon.svg'

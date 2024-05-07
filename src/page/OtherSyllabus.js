@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 import EditIcon from '../images/icons/editIcon.svg'
+import SearchIcon from '../images/icons/search.svg'
 
 const OtherSyllabus = () => {
     const [subject, setSubject] = useState("")
     const navigate = useNavigate()
     const [syllabus, setSyllabus] = useState([])
-    const [click, setClick] = useState(false)
     
-    const geSyllabusOther = () => {
+    const getSyllabusOtherBySubject = () => {
         const token = localStorage.getItem("s_token")
         axios
             .get(`http://185.146.1.71/pdf/syllabus/others?subject=${subject}`, {
@@ -19,33 +19,31 @@ const OtherSyllabus = () => {
 			})
             .then(result => {
                 setSyllabus(result.data)
-                setClick(true)
             })
             .catch(error => {
                 console.log(error)
             })
     }
+
+    useEffect(()=>{
+        getSyllabusOtherBySubject()  
+      
+    })
     return (
         <div className='container'>
             <div className='header'>
                 <h1>Другие Syllabus</h1>
-            </div>
-            {click===false ? 
-            <div className='profile__container'>
-                <div className='input-box'>
+                <div className="seacrh__component">
                     <input 
-                        className='input' 
-                        type="text"
+                        className="search__input"
                         value={subject}
                         onChange={(e)=>setSubject(e.target.value)}
-                        required/>
-                    <div className='labelline'>Введите предмета</div>
+                        placeholder="Поиск"
+                    />
+                    <img onClick={()=>getSyllabusOtherBySubject()} src={SearchIcon} alt=""/>
                 </div>
-                <div className='add__container-buttons'>
-                        <button onClick={()=>geSyllabusOther()} className='further__button'>Смотреть</button>
-                    </div>
-            </div> 
-            : 
+            </div>
+              
             <div className='syllabus__grid'>
                 {syllabus.map(e => (
                     <div className='syllabus'>
@@ -59,7 +57,7 @@ const OtherSyllabus = () => {
                         </div>
                     </div>
                 ))}       
-            </div>}
+            </div>
         </div>
     );
 };

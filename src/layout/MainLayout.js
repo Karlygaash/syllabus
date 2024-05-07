@@ -1,7 +1,7 @@
 import Logo from '../images/Logo.png'
 import {ReactComponent as ProjectIcon} from '../images/icons/ProjectIcon.svg'
 import {ReactComponent as RoleIcon} from '../images/icons/RoleIcon.svg'
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom"
+import { NavLink, Outlet, useNavigate } from "react-router-dom"
 import LogoutIcon from '../images/icons/logoutIcon.svg'
 import '../styles/MainLayout.css'
 import { useEffect, useState } from 'react'
@@ -80,7 +80,7 @@ const MainLayout = () => {
 					</ul>
 				</nav>
                 <div onClick={()=>setVisible(true)} className='header__logout'>
-				    <img src={LogoutIcon} className='header__logout-icon'/>
+				    <img src={LogoutIcon} alt="" className='header__logout-icon'/>
                     &nbsp;&nbsp;&nbsp;&nbsp;Выйти
 					<ConfirmDialog visible={visible} 
                     onHide={() => setVisible(false)} 

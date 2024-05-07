@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import RightIcon from '../images/icons/rightIcon.svg'
 import '../styles/AddStep1.css'
@@ -8,9 +7,7 @@ import Button from '../images/icons/Button.svg'
 import { useState } from "react";
 import axios from 'axios'
 import DeleteIcon from '../images/icons/deleteIcon.svg'
-import Success from '../images/icons/success.svg'
 import 'primereact/resources/themes/md-light-indigo/theme.css'
-import { Dialog } from 'primereact/dialog';
 import { toast } from "react-toastify"
 
 const EditStep4 = () => {
@@ -94,7 +91,7 @@ const EditStep4 = () => {
 
     useEffect(()=>{
         getSyllabusById()
-    }, [])
+    })
 
     return(
         <div className="container">

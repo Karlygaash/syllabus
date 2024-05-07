@@ -1,6 +1,4 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import RightIcon from '../images/icons/rightIcon.svg'
 import '../styles/AddStep1.css'

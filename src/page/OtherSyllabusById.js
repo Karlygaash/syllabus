@@ -1,11 +1,9 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import RightIcon from '../images/icons/rightIcon.svg'
 import { useEffect, useState } from "react";
 import axios from 'axios'
-import DeleteIcon from '../images/icons/delete.svg'
 import '../styles/SyllabusById.css'
 import { GrInstallOption } from "react-icons/gr";
-import { ConfirmDialog } from 'primereact/confirmdialog';
 import 'primereact/resources/themes/md-light-indigo/theme.css'
 
 const OtherSyllabusById = () => {
@@ -20,7 +18,6 @@ const OtherSyllabusById = () => {
     const [discussedBy1, setDiscussedBy1] = useState({})
     const [discussedBy2, setDiscussedBy2] = useState({})
     const [preface, setPreFace] = useState({})
-    const navigate=useNavigate()
 
     const getSyllabusById = () => {
         const token = localStorage.getItem("s_token")
@@ -65,7 +62,7 @@ const OtherSyllabusById = () => {
 
     useEffect(()=>{
         getSyllabusById()
-    }, [])
+    })
     return(
         <div className="container">
             <div className="section__navigation">
