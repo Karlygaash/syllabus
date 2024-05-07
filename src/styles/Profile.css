@@ -1,0 +1,73 @@
+.profile__container{
+    background-color: white;
+    border-radius: 15px;
+    padding: 32px;
+    margin-top: 40px;
+    width: 800px;
+}
+
+.profile__person{
+    display: flex;
+}
+
+.profile__person img{
+    width: 200px;
+    height: 200px;
+}
+
+.person__data{
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.password__button{
+    background-color:#7E2DFC;
+    color: white;
+    padding: 6px 34px;
+    border: none;
+    border-radius: 16px;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.data__button{
+    background-color:white;
+    color: black;
+    padding: 6px 34px;
+    border: 1px solid #7E2DFC;
+    border-radius: 16px;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.profile__buttons{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.profile__button{
+    display: flex;
+    justify-content: space-between;
+}
+
+.person__data p{
+    line-height: 26px;
+}
+
+.password__title{
+    margin-bottom: 20px;
+}

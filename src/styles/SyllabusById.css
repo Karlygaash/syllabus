@@ -1,0 +1,83 @@
+.mainInfo{
+    line-height: 24px;
+}
+
+.subjectName{
+    margin-bottom: 10px;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+table, th, td{
+    border: 1px solid #787878;
+}
+  
+td{
+    padding: 10px;
+}
+
+.syllabus_title{
+    margin: 30px 0 20px 0;
+}
+
+.literature h4{
+    margin-bottom: 10px;
+}
+
+.literature p{
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 10px;
+}
+  
+.footer__buttons{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.footer__edit_button{
+    background-color:rgb(216, 217, 219);
+    border: none;
+    padding: 8px 24px;
+    border-radius: 15px;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.footer__delete_button{
+    padding: 7px;
+    border-radius: 15px;
+    background-color: #DE350B;
+    border: none;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.footer__pdf_button{
+    background-color: white;
+    padding: 8px 24px;
+    border-radius: 15px;
+    border: 1px solid rgb(216, 217, 219);
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.footer__pdf_button .icon{
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}

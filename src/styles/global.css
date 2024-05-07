@@ -1,0 +1,28 @@
+.header-button{
+    background-color:#7E2DFC;
+    border: none;
+    padding: 8px 12px;
+    color: white;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    font-weight: 700;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.header-button-icon{
+    margin-right: 8px;
+}
+
+.container{
+    padding: 50px 32px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
