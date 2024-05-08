@@ -67,7 +67,7 @@ const SyllabusById = () => {
 
     useEffect(()=>{
         getSyllabusById()
-    })
+    }, [])
     return(
         <div className="container">
             <div className="section__navigation">

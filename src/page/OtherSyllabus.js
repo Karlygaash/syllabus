@@ -26,9 +26,8 @@ const OtherSyllabus = () => {
     }
 
     useEffect(()=>{
-        getSyllabusOtherBySubject()  
-      
-    })
+        getSyllabusOtherBySubject()       
+    }, [])
     return (
         <div className='container'>
             <div className='header'>

@@ -56,6 +56,7 @@ const Project = () => {
         getSyllabus()
         setIsTrue(false)
     }, [isTrue])
+    
     return(
         <div className='container'>
             <div className='header'>
