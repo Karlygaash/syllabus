@@ -136,12 +136,11 @@ const EditStep1 = () => {
                         <div className='labelline'> Название предмета</div>
                     </div>
                     <div className='input-box'>
-                        <select onChange={e=> setSpecialityName(e.target.value)} className='input' required>
-                            <option value={specialityName}>{specialityName}</option>
-                            <option value="7М06136 «Информационные системы»">7М06136 «Информационные системы»</option>
-                            <option value="6B06106 «Вычислительная техника и программное обеспечение»">6B06106 «Вычислительная техника и программное обеспечение»</option>
-                            <option value="7M01502 «Информатика (пед.)»">7M01502 «Информатика (пед.)»</option>
-                        </select>
+                        <input 
+                            className='input' 
+                            type="text"
+                            value={specialityName}
+                            onChange={e=>setSpecialityName(e.target.value)} required/>
                         <div className='labelline'> Название специальности</div>
                     </div>
                     <div className='input-box-grid'>
@@ -157,7 +156,6 @@ const EditStep1 = () => {
                             <select onChange={e=>setKafedraName(e.target.value)} className='input' required>
                                 <option value={kafedraName}>{kafedraName}</option>
                                 <option value="Информационные технологии">Информационные технологии</option>
-                                <option value="Военный">Военный</option>
                             </select>
                             <div className='labelline'>Название кафедры</div>
                         </div>

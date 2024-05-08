@@ -18,6 +18,7 @@ const AddStep1 = () => {
     const [practiceLessons, setPracticeLessons] = useState()
     const [syllabusId, setSyllabusId] = useState(0);
     const navigate=useNavigate();
+
     const postCreateSyllabus = () => {
         if (!subjectName.trim()) {
             alert("Заполните название предмета!");
@@ -52,7 +53,7 @@ const AddStep1 = () => {
             alert("Заполните количество практические занятие!");
             return;
         }
-        console.log()
+
         const token = localStorage.getItem("s_token")
         axios
             .post("http://185.146.1.71/pdf/syllabus", {
