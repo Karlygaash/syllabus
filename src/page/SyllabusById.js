@@ -48,6 +48,32 @@ const SyllabusById = () => {
 			})
     }
 
+    const onButtonClick = (pdf) => {
+        const pdfUrl = "http://185.146.1.71/pdf/PDF-generation-project/"+pdf;
+        const link = document.createElement("a");
+        link.href = pdfUrl;
+        link.download = pdf; // specify the filename
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+    const generateSyllabus = () => {
+        const token = localStorage.getItem("s_token")
+		axios
+			.post(`http://185.146.1.71/pdf/syllabus/generate/${syllabusId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+			.then(result => {
+                onButtonClick(result.data.message)
+			})
+			.catch(error => {
+                console.log(error)
+			})
+    }
+
     const onDeleteSyllabus = () => {
         const token = localStorage.getItem("s_token")
 		axios
@@ -161,7 +187,7 @@ const SyllabusById = () => {
                     }
                 </div>
                 <div className="footer__buttons">
-                    <button className="footer__pdf_button"><GrInstallOption className="icon" /> Загрузить pdf формат</button>
+                    <button onClick={()=>generateSyllabus()} className="footer__pdf_button"><GrInstallOption className="icon" /> Загрузить pdf формат</button>
                     <button onClick={()=>navigate(`/${syllabusId}/edit`)} className="footer__edit_button">Редактировать</button>
                     <button onClick={()=>setVisible(true)} className="footer__delete_button"><img src={DeleteIcon} alt=""/></button>
                 </div>

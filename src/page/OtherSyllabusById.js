@@ -19,6 +19,16 @@ const OtherSyllabusById = () => {
     const [discussedBy2, setDiscussedBy2] = useState({})
     const [preface, setPreFace] = useState({})
 
+    const onButtonClick = (pdf) => {
+        const pdfUrl = "http://185.146.1.71/pdf/PDF-generation-project/"+pdf;
+        const link = document.createElement("a");
+        link.href = pdfUrl;
+        link.download = pdf; // specify the filename
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     const getSyllabusById = () => {
         const token = localStorage.getItem("s_token")
 		axios
@@ -45,19 +55,20 @@ const OtherSyllabusById = () => {
     }
 
     const InstallPdfFormat = () => {
-        // const token = localStorage.getItem("s_token")
-		// axios
-		// 	.post(`http://185.146.1.71/pdf/syllabus/generate${syllabusId}`, {
-        //         headers: {
-        //             Authorization: `Bearer ${token}`,
-        //         },
-        //     })
-		// 	.then(result => {
-        //         console.log(result)
-		// 	})
-		// 	.catch(error => {
-        //         console.log(error)
-		// 	})
+        const token = localStorage.getItem("s_token")
+		axios
+			.post(`http://185.146.1.71/pdf/syllabus/generate/${syllabusId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+			.then(result => {
+                onButtonClick(result.data.message)
+                console.log(result.data.message)
+			})
+			.catch(error => {
+                console.log(error)
+			})
     }
 
     useEffect(()=>{
@@ -158,7 +169,6 @@ const OtherSyllabusById = () => {
                 <div className="footer__buttons">
                     <button onClick={()=> InstallPdfFormat()} className="footer__pdf_button"><GrInstallOption className="icon" /> Загрузить pdf формат</button>
                 </div>
-        
             </div>
         </div>
     );
