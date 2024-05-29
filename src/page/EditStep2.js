@@ -39,16 +39,6 @@ const EditStep2 = () => {
         }if (!speciality1.trim()) {
             alert("Заполните специальности");
             return;
-        }if (!speciality2.trim()) {
-            alert("Заполните специальности");
-            return;
-        }
-        if (!speciality3.trim()) {
-            alert("Заполните специальности");
-            return;
-        }if (!speciality4.trim()) {
-            alert("Заполните специальности");
-            return;
         }
         
         const token = localStorage.getItem("s_token")
@@ -63,15 +53,12 @@ const EditStep2 = () => {
                     discussion2,
                     "discussedBy1" : {
                         "fullname" : fullName2,
-                        "specialist" : speciality2
                     },
                     "discussedBy2" : {
-                        "fullname" : fullName3,
-                        "specialist" : speciality3
+                        "fullname" : fullName3
                     },
                     "confirmedBy" : {
-                        "fullname" : fullName4,
-                        "specialist" : speciality4
+                        "fullname" : fullName4
                     }
                 }
             }, {
@@ -151,16 +138,16 @@ const EditStep2 = () => {
                         </div>
                     </div>
                     <h3>2. Обсуждено</h3>
-                    <div className='input-box'>
-                        <input 
-                            className='input' 
-                            type="text"
-                            value={discussion1}
-                            onChange={e=>setDiscussion1(e.target.value)}
-                            required/>
-                        <div className='labelline'>2.1</div>
-                    </div>
                     <div className='input-box-grid'>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                type="text"
+                                value={discussion1}
+                                onChange={e=>setDiscussion1(e.target.value)}
+                                required/>
+                            <div className='labelline'>2.1</div>
+                        </div>
                         <div className='input-box'>
                             <input 
                                 className='input' 
@@ -170,26 +157,17 @@ const EditStep2 = () => {
                                 required/>
                             <div className='labelline'>Полное имя</div>
                         </div>
+                    </div>
+                    <div className='input-box-grid'>
                         <div className='input-box'>
                             <input 
                                 className='input' 
                                 type="text"
-                                value={speciality2}
-                                onChange={e=>setSpeciality2(e.target.value)}
+                                value={discussion2}
+                                onChange={e=>setDiscussion2(e.target.value)}
                                 required/>
-                            <div className='labelline'>Специальности</div>
+                            <div className='labelline'>2.2</div>
                         </div>
-                    </div>
-                    <div className='input-box'>
-                        <input 
-                            className='input' 
-                            type="text"
-                            value={discussion2}
-                            onChange={e=>setDiscussion2(e.target.value)}
-                            required/>
-                        <div className='labelline'>2.2</div>
-                    </div>
-                    <div className='input-box-grid'>
                         <div className='input-box'>
                             <input 
                                 className='input' 
@@ -199,18 +177,8 @@ const EditStep2 = () => {
                                 required/>
                             <div className='labelline'>Полное имя</div>
                         </div>
-                        <div className='input-box'>
-                            <input 
-                                className='input' 
-                                type="text"
-                                value={speciality3}
-                                onChange={e=>setSpeciality3(e.target.value)}
-                                required/>
-                            <div className='labelline'>Специальности</div>
-                        </div>
                     </div>
                     <h3>3. Утверждено</h3>
-                    <div className='input-box-grid'>
                         <div className='input-box'>
                             <input 
                                 className='input' 
@@ -220,16 +188,7 @@ const EditStep2 = () => {
                                 required/>
                             <div className='labelline'>Полное имя</div>
                         </div>
-                        <div className='input-box'>
-                            <input 
-                                className='input' 
-                                type="text"
-                                value={speciality4}
-                                onChange={e=>setSpeciality4(e.target.value)}
-                                required/>
-                            <div className='labelline'>Специальности</div>
-                        </div>
-                    </div>
+                    
                     <div className='add__container-buttons'>
                         <button onClick={()=>putCreateSyllabus()} className="save__button">Сохранить</button>
                         <button onClick={()=>navigate(`/${syllabusId}/edit/step3`)} className='further__button'>Далее</button>

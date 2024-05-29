@@ -12,6 +12,7 @@ const AddStep1 = () => {
     const [kafedraName, setKafedraName] = useState("")
     const [courseNumber, setCourseNumber] = useState()
     const [creditNumber, setCreditNumber] = useState()
+    const [srop, setSROP] = useState()
     const [allHours, setAllHours] = useState()
     const [lectureHours, setLectureHours] = useState()
     const [sro, setSRO] = useState()
@@ -49,6 +50,9 @@ const AddStep1 = () => {
         }if (sro === undefined || sro === null) {
             alert("Заполните СРО!");
             return;
+        }if (srop === undefined || srop === null) {
+            alert("Заполните СРОП!");
+            return;
         }if (practiceLessons === undefined || practiceLessons === null) {
             alert("Заполните количество практические занятие!");
             return;
@@ -65,6 +69,7 @@ const AddStep1 = () => {
                 lectureHours,
                 practiceLessons,
                 sro,
+                srop,
                 "subjectInfo" : {
                     subjectName,
                     specialityName
@@ -174,6 +179,14 @@ const AddStep1 = () => {
                                 onChange={e=>setSRO(e.target.valueAsNumber)}
                                 type="number" required/>
                             <div className='labelline'>CPO</div>
+                        </div>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                value={srop}
+                                onChange={e=>setSROP(e.target.valueAsNumber)}
+                                type="number" required/>
+                            <div className='labelline'>CPOП</div>
                         </div>
                     </div>
                     {syllabusId > 0 ? navigate(`/add/${syllabusId}/step2`) : ""}

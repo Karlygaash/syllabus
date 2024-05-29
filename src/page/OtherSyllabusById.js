@@ -18,6 +18,8 @@ const OtherSyllabusById = () => {
     const [discussedBy1, setDiscussedBy1] = useState({})
     const [discussedBy2, setDiscussedBy2] = useState({})
     const [preface, setPreFace] = useState({})
+    const [question1, setQuestions1] = useState([])
+    const [question2, setQuestions2] = useState([])
 
     const onButtonClick = (pdf) => {
         const pdfUrl = "http://185.146.1.71/pdf/PDF-generation-project/"+pdf;
@@ -48,6 +50,8 @@ const OtherSyllabusById = () => {
                 setConfirmedBy(result.data.preface.confirmedBy)
                 setDiscussedBy1(result.data.preface.discussedBy1)
                 setDiscussedBy2(result.data.preface.discussedBy2)
+                setQuestions1(result.data.question1.questions)
+                setQuestions2(result.data.question2.questions)
 			})
 			.catch(error => {
                 console.log(error)
@@ -96,7 +100,40 @@ const OtherSyllabusById = () => {
                     <p>Лекций - {mainInfo.lectureHours}</p>
                     <p>Семинарские (практические) занятия - {mainInfo.practiceLessons}</p>
                     <p>СРО - {mainInfo.sro}</p>
+                    <p>СРОП - {mainInfo.srop}</p>
                 </div>
+
+                <div className="literature">
+                    <h3 className="syllabus_title">ПРЕДИСЛОВИЕ</h3>
+                    {preface === null ? "пока пусто" :
+                        <div>
+                            <h4>1. Разработал</h4>
+                            <p>Составитель: {madeBy.specialist} {madeBy.fullName}</p>
+                            <h4>2. Обсуждено</h4>
+                            <p>2.1. На заседании кафедры "Информационные системы" от {preface.discussion1}</p>
+                            <p> Заведующий кафедрой {discussedBy1.fullName}</p>
+                            <p>2.2.  На заседании комиссии по обеспечению качества Технологического факультета от {preface.discussion2}</p>
+                            <p>Председатель ТФ {discussedBy2.fullName}</p>
+                            <h4>3. Утверждено</h4>
+                            <p>Декан факультета ТФ {confirmedBy.fullName}</p>
+                        </div>
+                    }           
+                </div>
+
+                <div className="literature">
+                <h3 className="syllabus_title">ОБЩИЕ СВЕДЕНИЯ О ПРЕПОДАВАТЕЛЕ И ДИСЦИПЛИНЫ</h3>
+                    {preface === null ? "пока пусто" :
+                        <div>
+                            <p>Ф.И.О преподавателя: {madeBy.fullName}</p>
+                            <p>Ученая степень, звание, должность: {madeBy.specialist}</p>
+                            <p>Факультет {madeBy.faculty}</p>
+                            <p>Контактная информация: тел. , {madeBy.email} {madeBy.address}</p>
+                            <p>Сроки и время для консультации обучающихся: {madeBy.consultation}</p>
+                        </div>
+                    }           
+                </div>
+                
+
                 <h3 className="syllabus_title">ТЕМАТИЧЕСКОЕ СОДЕРЖАНИЕ ДИСЦИПЛИНЫ И РАСПРЕДЕЛЕНИЕ
                     ЧАСОВ ПО ВИДАМ ЗАНЯТИЙ</h3>
                 <table>
@@ -135,20 +172,19 @@ const OtherSyllabusById = () => {
                 </table>
 
                 <div className="literature">
-                    <h3 className="syllabus_title">ПРЕДИСЛОВИЕ</h3>
-                    {preface === null ? "пока пусто" :
-                        <div>
-                            <h4>1. Разработал</h4>
-                            <p>Составитель: {madeBy.specialist} {madeBy.fullName}</p>
-                            <h4>2. Обсуждено</h4>
-                            <p>2.1. {preface.discussion1}</p>
-                            <p>{discussedBy1.specialist} {discussedBy1.fullName}</p>
-                            <p>2.2. {preface.discussion2}</p>
-                            <p>{discussedBy2.specialist} {discussedBy2.fullName}</p>
-                            <h4>3. Утверждено</h4>
-                            <p>{confirmedBy.specialist} {confirmedBy.fullName}</p>
-                        </div>
+                    <h3 className="syllabus_title">ВОПРОСЫ</h3>
+                    <h4>Вопросы к рубежному контролю №1</h4>
+                    {question1 === null ? "" :
+                    question1.map(e => (
+                        <p>{e}</p>
+                    ))
                     }           
+                    <h4>Вопросы к рубежному контролю №2</h4>
+                    {question2 === null ? "" :
+                    question2.map(e => (
+                        <p>{e}</p>
+                    ))
+                    }
                 </div>
                 
                 <div className="literature">

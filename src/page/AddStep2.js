@@ -20,6 +20,15 @@ const AddStep2 = () => {
     const [discussion1, setDiscussion1] = useState("")
     const [discussion2, setDiscussion2] = useState("")
 
+    const [date, setDate] = useState('');
+    const [day, setDay] = useState('');
+    const [month, setMonth] = useState('');
+    const [year, setYear] = useState('');
+    const [date2, setDate2] = useState('');
+    const [day2, setDay2] = useState('');
+    const [month2, setMonth2] = useState('');
+    const [year2, setYear2] = useState('');
+
     const putCreateSyllabus = () => {
         if (!fullName1.trim()) {
             alert("Заполните полное имя!");
@@ -37,12 +46,12 @@ const AddStep2 = () => {
         }if (!speciality1.trim()) {
             alert("Заполните специальности");
             return;
-        }if (!speciality2.trim()) {
-            alert("Заполните специальности");
+        }if (!date.trim()) {
+            alert("Заполните date");
             return;
         }
-        if (!speciality3.trim()) {
-            alert("Заполните специальности");
+        if (!date2.trim()) {
+            alert("Заполните date");
             return;
         }if (!speciality4.trim()) {
             alert("Заполните специальности");
@@ -57,15 +66,13 @@ const AddStep2 = () => {
                         "fullname" : fullName1,
                         "specialist" : speciality1
                     },
-                    discussion1,
-                    discussion2,
+                    "discussion1" : `"${day}" ${month} ${year} года`,
+                    "discussion2" : `"${day2}" ${month2} ${year2} года`,
                     "discussedBy1" : {
                         "fullname" : fullName2,
-                        "specialist" : speciality2
                     },
                     "discussedBy2" : {
                         "fullname" : fullName3,
-                        "specialist" : speciality3
                     },
                     "confirmedBy" : {
                         "fullname" : fullName4,
@@ -84,6 +91,86 @@ const AddStep2 = () => {
                 console.log(error)
             })
     }
+
+    const handleDateChange = (event) => {
+        const inputDate = event.target.value;
+        setDate(inputDate);
+    
+        if (inputDate) {
+          const [year, month, day] = inputDate.split('-');
+          setDay(day);
+          if(month=== '01'){
+            setMonth('января')
+          }else if(month === '02'){
+            setMonth('февраля')
+          }else if(month === '03'){
+            setMonth('марта')
+          }else if(month === '04'){
+            setMonth('апреля')
+          }else if(month === '05'){
+            setMonth('мая')
+          }else if(month === '06'){
+            setMonth('июня')
+          }else if(month === '07'){
+            setMonth('июля')
+          }else if(month === '08'){
+            setMonth('августа')
+          }else if(month === '09'){
+            setMonth('сентября')
+          }else if(month === '10'){
+            setMonth('октября')
+          }else if(month === '11'){
+            setMonth('ноября')
+          }else if(month === '12'){
+            setMonth('декабря')
+          }
+          setYear(year);
+        } else {
+          setDay('');
+          setMonth('');
+          setYear('');
+        }
+    };
+
+    const handleDateChange2 = (event) => {
+        const inputDate = event.target.value;
+        setDate2(inputDate);
+    
+        if (inputDate) {
+          const [year, month, day] = inputDate.split('-');
+          setDay2(day);
+          if(month=== '01'){
+            setMonth2('января')
+          }else if(month === '02'){
+            setMonth2('февраля')
+          }else if(month === '03'){
+            setMonth2('марта')
+          }else if(month === '04'){
+            setMonth2('апреля')
+          }else if(month === '05'){
+            setMonth2('мая')
+          }else if(month === '06'){
+            setMonth2('июня')
+          }else if(month === '07'){
+            setMonth2('июля')
+          }else if(month === '08'){
+            setMonth2('августа')
+          }else if(month === '09'){
+            setMonth2('сентября')
+          }else if(month === '10'){
+            setMonth2('октября')
+          }else if(month === '11'){
+            setMonth2('ноября')
+          }else if(month === '12'){
+            setMonth2('декабря')
+          }
+          setYear2(year);
+        } else {
+          setDay2('');
+          setMonth2('');
+          setYear2('');
+        }
+    };
 
     return(
         <div className="container">
@@ -120,16 +207,15 @@ const AddStep2 = () => {
                         </div>
                     </div>
                     <h3>2. Обсуждено</h3>
-                    <div className='input-box'>
-                        <input 
-                            className='input' 
-                            type="text"
-                            value={discussion1}
-                            onChange={e=>setDiscussion1(e.target.value)}
-                            required/>
-                        <div className='labelline'>2.1</div>
-                    </div>
                     <div className='input-box-grid'>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                type="date"
+                                value={date}
+                                onChange={handleDateChange}
+                                required/>         
+                        </div>
                         <div className='input-box'>
                             <input 
                                 className='input' 
@@ -139,26 +225,16 @@ const AddStep2 = () => {
                                 required/>
                             <div className='labelline'>Полное имя</div>
                         </div>
+                    </div>
+                    <div className='input-box-grid'>
                         <div className='input-box'>
                             <input 
                                 className='input' 
-                                type="text"
-                                value={speciality2}
-                                onChange={e=>setSpeciality2(e.target.value)}
+                                type="date"
+                                value={date2}
+                                onChange={handleDateChange2}
                                 required/>
-                            <div className='labelline'>Специальности</div>
                         </div>
-                    </div>
-                    <div className='input-box'>
-                        <input 
-                            className='input' 
-                            type="text"
-                            value={discussion2}
-                            onChange={e=>setDiscussion2(e.target.value)}
-                            required/>
-                        <div className='labelline'>2.2</div>
-                    </div>
-                    <div className='input-box-grid'>
                         <div className='input-box'>
                             <input 
                                 className='input' 
@@ -168,15 +244,7 @@ const AddStep2 = () => {
                                 required/>
                             <div className='labelline'>Полное имя</div>
                         </div>
-                        <div className='input-box'>
-                            <input 
-                                className='input' 
-                                type="text"
-                                value={speciality3}
-                                onChange={e=>setSpeciality3(e.target.value)}
-                                required/>
-                            <div className='labelline'>Специальности</div>
-                        </div>
+             
                     </div>
                     <h3>3. Утверждено</h3>
                     <div className='input-box-grid'>
@@ -188,15 +256,6 @@ const AddStep2 = () => {
                                 onChange={e=>setFullName4(e.target.value)}
                                 required/>
                             <div className='labelline'>Полное имя</div>
-                        </div>
-                        <div className='input-box'>
-                            <input 
-                                className='input' 
-                                type="text"
-                                value={speciality4}
-                                onChange={e=>setSpeciality4(e.target.value)}
-                                required/>
-                            <div className='labelline'>Специальности</div>
                         </div>
                     </div>
                     <div className='add__container-buttons'>

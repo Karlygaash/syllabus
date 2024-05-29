@@ -17,6 +17,7 @@ const EditStep1 = () => {
     const [allHours, setAllHours] = useState()
     const [lectureHours, setLectureHours] = useState()
     const [sro, setSRO] = useState()
+    const [srop, setSROP] = useState()
     const [practiceLessons, setPracticeLessons] = useState()
     const navigate = useNavigate()
 
@@ -38,6 +39,7 @@ const EditStep1 = () => {
                 setKafedraName(result.data.mainInfo.kafedraName)
                 setLectureHours(result.data.mainInfo.lectureHours)
                 setSRO(result.data.mainInfo.sro)
+                setSROP(result.data.mainInfo.srop)
                 setPracticeLessons(result.data.mainInfo.practiceLessons)
 			})
 			.catch(error => {
@@ -75,6 +77,9 @@ const EditStep1 = () => {
         }if (sro === undefined || sro === null) {
             alert("Заполните СРО!");
             return;
+        }if (srop === undefined || srop === null) {
+            alert("Заполните СРОП!");
+            return;
         }if (practiceLessons === undefined || practiceLessons === null) {
             alert("Заполните количество практические занятие!");
             return;
@@ -92,6 +97,7 @@ const EditStep1 = () => {
                     lectureHours,
                     practiceLessons,
                     sro,
+                    srop,
                     "subjectInfo" : {
                         subjectName,
                         specialityName
@@ -207,6 +213,14 @@ const EditStep1 = () => {
                                 onChange={e=>setSRO(e.target.valueAsNumber)}
                                 type="number" required/>
                             <div className='labelline'>CPO</div>
+                        </div>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                value={srop}
+                                onChange={e=>setSROP(e.target.valueAsNumber)}
+                                type="number" required/>
+                            <div className='labelline'>CPOП</div>
                         </div>
                     </div>
                     <div className='add__container-buttons'>
