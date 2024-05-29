@@ -14,13 +14,15 @@ const EditStep2 = () => {
     const [fullName1, setFullName1] = useState("")
     const [speciality1, setSpeciality1] = useState("")
     const [fullName2, setFullName2] = useState("")
-    const [speciality2, setSpeciality2] = useState("")
     const [fullName3, setFullName3] = useState("")
-    const [speciality3, setSpeciality3] = useState("")
     const [fullName4, setFullName4] = useState("")
-    const [speciality4, setSpeciality4] = useState("")
     const [discussion1, setDiscussion1] = useState("")
     const [discussion2, setDiscussion2] = useState("")
+
+    const [faculty, setFaculty] = useState("")
+    const [email, setEmail] = useState("")
+    const [address, setAddress] = useState("")
+    const [consultation, setConsultation] = useState("")
 
     const putCreateSyllabus = () => {
         if (!fullName1.trim()) {
@@ -47,7 +49,11 @@ const EditStep2 = () => {
                 "preface" : {
                     "madeBy" : {
                         "fullname" : fullName1,
-                        "specialist" : speciality1
+                        "specialist" : speciality1,
+                        address,
+                        email,
+                        consultation,
+                        faculty
                     },
                     discussion1,
                     discussion2,
@@ -90,9 +96,10 @@ const EditStep2 = () => {
                 setFullName3(result.data.preface.discussedBy2.fullName)
                 setFullName4(result.data.preface.confirmedBy.fullName)
                 setSpeciality1(result.data.preface.madeBy.specialist)
-                setSpeciality2(result.data.preface.discussedBy1.specialist)
-                setSpeciality3(result.data.preface.discussedBy2.specialist)
-                setSpeciality4(result.data.preface.confirmedBy.specialist)
+                setAddress(result.data.preface.madeBy.address)
+                setConsultation(result.data.preface.madeBy.consultation)
+                setEmail(result.data.preface.madeBy.email)
+                setFaculty(result.data.preface.madeBy.faculty)
 			})
 			.catch(error => {
                 console.log(error)
@@ -135,6 +142,43 @@ const EditStep2 = () => {
                                 onChange={e=>setSpeciality1(e.target.value)}
                                 required/>
                             <div className='labelline'>Специальности</div>
+                        </div>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                type="text"
+                                value={email}
+                                onChange={e=>setEmail(e.target.value)}
+                                required/>
+                            <div className='labelline'>Почта</div>
+                        </div>
+                        <div className='input-box'>
+                          <select onChange={e=>setFaculty(e.target.value)} className='input' required>
+                            <option value={faculty}>{faculty}</option>
+                            {faculty === 'Технологический' ? 
+                                <option value="Гуманитарный">Гуманитарный</option> :
+                                <option value="Технологический">Технологический</option>
+                            }
+                          </select>
+                          <div className='labelline'>Факультет</div>
+                        </div>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                type="text"
+                                value={address}
+                                onChange={e=>setAddress(e.target.value)}
+                                required/>
+                            <div className='labelline'>Адрес</div>
+                        </div>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                type="text"
+                                value={consultation}
+                                onChange={e=>setConsultation(e.target.value)}
+                                required/>
+                            <div className='labelline'>Сроки и время для консультации обучающихся</div>
                         </div>
                     </div>
                     <h3>2. Обсуждено</h3>

@@ -218,7 +218,7 @@ const EditStep3 = () => {
                     <p onClick={()=>AddToModule()} className="add_to__module">Добавить модуль</p>
                     <div className='add__container-buttons'>
                         <button onClick={()=>putCreateSyllabus()} className="save__button">Сохранить</button>
-                        <button onClick={()=>navigate(`/${syllabusId}/edit/step5`)} className='further__button'>Далее</button>
+                        <button onClick={()=>navigate(`/${syllabusId}/edit/step4`)} className='further__button'>Далее</button>
                         <Link to={`/${syllabusId}`}><button className='cancel__button'>Отмена</button></Link>
                     </div>
                 </div>

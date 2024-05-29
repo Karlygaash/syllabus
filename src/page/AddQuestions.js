@@ -65,7 +65,7 @@ const AddQuestions = () => {
 				},
 			})
             .then(result => {
-                navigate(`/add/${syllabusId}/step6`)
+                navigate(`/add/${syllabusId}/step5`)
             })
             .catch(error => {
                 console.log(error)

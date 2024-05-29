@@ -12,13 +12,14 @@ const AddStep2 = () => {
     const [fullName1, setFullName1] = useState("")
     const [speciality1, setSpeciality1] = useState("")
     const [fullName2, setFullName2] = useState("")
-    const [speciality2, setSpeciality2] = useState("")
     const [fullName3, setFullName3] = useState("")
-    const [speciality3, setSpeciality3] = useState("")
     const [fullName4, setFullName4] = useState("")
     const [speciality4, setSpeciality4] = useState("")
-    const [discussion1, setDiscussion1] = useState("")
-    const [discussion2, setDiscussion2] = useState("")
+
+    const [faculty, setFaculty] = useState("")
+    const [email, setEmail] = useState("")
+    const [address, setAddress] = useState("")
+    const [consultation, setConsultation] = useState("")
 
     const [date, setDate] = useState('');
     const [day, setDay] = useState('');
@@ -53,9 +54,6 @@ const AddStep2 = () => {
         if (!date2.trim()) {
             alert("Заполните date");
             return;
-        }if (!speciality4.trim()) {
-            alert("Заполните специальности");
-            return;
         }
         
         const token = localStorage.getItem("s_token")
@@ -64,7 +62,11 @@ const AddStep2 = () => {
                 "preface" : {
                     "madeBy" : {
                         "fullname" : fullName1,
-                        "specialist" : speciality1
+                        "specialist" : speciality1,
+                        email,
+                        address,
+                        consultation,
+                        faculty
                     },
                     "discussion1" : `"${day}" ${month} ${year} года`,
                     "discussion2" : `"${day2}" ${month2} ${year2} года`,
@@ -75,8 +77,7 @@ const AddStep2 = () => {
                         "fullname" : fullName3,
                     },
                     "confirmedBy" : {
-                        "fullname" : fullName4,
-                        "specialist" : speciality4
+                        "fullname" : fullName4
                     }
                 }
             }, {
@@ -203,7 +204,42 @@ const AddStep2 = () => {
                                 value={speciality1}
                                 onChange={e=>setSpeciality1(e.target.value)}
                                 required/>
-                            <div className='labelline'>Специальности</div>
+                            <div className='labelline'>Должность</div>
+                        </div>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                type="text"
+                                value={email}
+                                onChange={e=>setEmail(e.target.value)}
+                                required/>
+                            <div className='labelline'>Почта</div>
+                        </div>
+                        <div className='input-box'>
+                          <select onChange={e=>setFaculty(e.target.value)} className='input' required>
+                            <option></option>
+                            <option value="Технологический">Технологический</option>
+                            <option value="Гуманитарный">Гуманитарный</option>
+                          </select>
+                          <div className='labelline'>Факультет</div>
+                        </div>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                type="text"
+                                value={address}
+                                onChange={e=>setAddress(e.target.value)}
+                                required/>
+                            <div className='labelline'>Адрес</div>
+                        </div>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                type="text"
+                                value={consultation}
+                                onChange={e=>setConsultation(e.target.value)}
+                                required/>
+                            <div className='labelline'>Сроки и время для консультации обучающихся</div>
                         </div>
                     </div>
                     <h3>2. Обсуждено</h3>

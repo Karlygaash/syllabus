@@ -67,18 +67,14 @@ function App() {
         },
         {
           path: "/:syllabusId/edit/step3",
-          element: <EditMadeBy/>
-        },
-        {
-          path: "/:syllabusId/edit/step4",
           element: <EditStep3/>
         },
         {
-          path: "/:syllabusId/edit/step5",
+          path: "/:syllabusId/edit/step4",
           element: <EditQuestions/>
         },
         {
-          path: "/:syllabusId/edit/step6",
+          path: "/:syllabusId/edit/step5",
           element: <EditStep4/>
         },
         {
@@ -91,18 +87,14 @@ function App() {
         },
         {
           path: "/add/:syllabusId/step3",
-          element: <AddMadeBy/>
-        },
-        {
-          path: "/add/:syllabusId/step4",
           element: <AddStep3/>
         },
         {
-          path: "/add/:syllabusId/step5",
+          path: "/add/:syllabusId/step4",
           element: <AddQuestions/>
         },
         {
-          path: "/add/:syllabusId/step6",
+          path: "/add/:syllabusId/step5",
           element: <AddStep4/>
         },
         {

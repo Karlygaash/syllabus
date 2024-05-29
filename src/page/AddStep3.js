@@ -34,7 +34,7 @@ const AddStep3 = () => {
 				},
 			})
             .then(result => {
-                navigate(`/add/${syllabusId}/step5`)
+                navigate(`/add/${syllabusId}/step4`)
             })
             .catch(error => {
                 console.log(error)
