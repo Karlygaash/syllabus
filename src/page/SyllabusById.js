@@ -23,6 +23,7 @@ const SyllabusById = () => {
     const [preface, setPreFace] = useState({})
     const [question1, setQuestions1] = useState([])
     const [question2, setQuestions2] = useState([])
+    const [text, setText] = useState({})
     const navigate=useNavigate()
 
     const getSyllabusById = () => {
@@ -46,6 +47,7 @@ const SyllabusById = () => {
                 setDiscussedBy2(result.data.preface.discussedBy2)
                 setQuestions1(result.data.question1.questions)
                 setQuestions2(result.data.question2.questions)
+                setText(result.data.text)
 			})
 			.catch(error => {
                 console.log(error)
@@ -140,7 +142,8 @@ const SyllabusById = () => {
                 </div>
 
                 <div className="literature">
-                <h3 className="syllabus_title">ОБЩИЕ СВЕДЕНИЯ О ПРЕПОДАВАТЕЛЕ И ДИСЦИПЛИНЫ</h3>
+                <h3 className="syllabus_title">ОБЩИЕ ПОЛОЖЕНИЯ</h3>
+                <h4>1. Общие сведения о преподавателе и дисциплине</h4>
                     {preface === null ? "пока пусто" :
                         <div>
                             <p>Ф.И.О преподавателя: {madeBy.fullName}</p>
@@ -149,7 +152,21 @@ const SyllabusById = () => {
                             <p>Контактная информация: тел. , {madeBy.email} {madeBy.address}</p>
                             <p>Сроки и время для консультации обучающихся: {madeBy.consultation}</p>
                         </div>
-                    }           
+                    }
+                <h4 className="h4">2. Краткое описание содержания дисциплины</h4>
+                <p>{text.text2}</p>
+                <h4 className="h4">3. Цель преподавания дисциплины</h4>
+                <p>{text.text3}</p>
+                <h4 className="h4">4. Задача дисциплины</h4>
+                <p>{text.text4}</p>
+                <h4 className="h4">5. Ожидаемые результаты обучения и формируемые компетенции</h4>
+                <p>{text.text5}</p>
+                <h4 className="h4">6. Пререквизиты курса:</h4>
+                <p>{text.text6}</p>
+                <h4 className="h4">7. Постреквизиты курса:</h4>
+                <p>{text.text7}</p>
+                <h4 className="h4">8. Формат обучения</h4> 
+                <p>{text.text8}</p>       
                 </div>
 
                 <h3 className="syllabus_title">ТЕМАТИЧЕСКОЕ СОДЕРЖАНИЕ ДИСЦИПЛИНЫ И РАСПРЕДЕЛЕНИЕ

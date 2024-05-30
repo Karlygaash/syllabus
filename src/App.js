@@ -27,6 +27,8 @@ import AddMadeBy from './page/AddMadeBy';
 import AddQuestions from './page/AddQuestions';
 import EditMadeBy from './page/EditMadeBy';
 import EditQuestions from './page/EditQuestions';
+import AddText from './page/AddText';
+import EditText from './page/EditText';
 
 function App() {
   const router=createBrowserRouter([
@@ -67,14 +69,18 @@ function App() {
         },
         {
           path: "/:syllabusId/edit/step3",
-          element: <EditStep3/>
+          element: <EditText/>
         },
         {
           path: "/:syllabusId/edit/step4",
-          element: <EditQuestions/>
+          element: <EditStep3/>
         },
         {
           path: "/:syllabusId/edit/step5",
+          element: <EditQuestions/>
+        },
+        {
+          path: "/:syllabusId/edit/step6",
           element: <EditStep4/>
         },
         {
@@ -87,14 +93,18 @@ function App() {
         },
         {
           path: "/add/:syllabusId/step3",
-          element: <AddStep3/>
+          element: <AddText/>
         },
         {
           path: "/add/:syllabusId/step4",
-          element: <AddQuestions/>
+          element: <AddStep3/>
         },
         {
           path: "/add/:syllabusId/step5",
+          element: <AddQuestions/>
+        },
+        {
+          path: "/add/:syllabusId/step6",
           element: <AddStep4/>
         },
         {

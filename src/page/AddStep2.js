@@ -243,6 +243,7 @@ const AddStep2 = () => {
                         </div>
                     </div>
                     <h3>2. Обсуждено</h3>
+                    <p className="discussion-p">2.1 На заседании кафедры "Информационные системы"</p>
                     <div className='input-box-grid'>
                         <div className='input-box'>
                             <input 
@@ -262,6 +263,7 @@ const AddStep2 = () => {
                             <div className='labelline'>Полное имя</div>
                         </div>
                     </div>
+                    <p className="discussion-p">2.2 На заседании комиссии по обеспечению качества Технологического факультета</p>
                     <div className='input-box-grid'>
                         <div className='input-box'>
                             <input 

@@ -12,10 +12,10 @@ const AddStep1 = () => {
     const [kafedraName, setKafedraName] = useState("")
     const [courseNumber, setCourseNumber] = useState()
     const [creditNumber, setCreditNumber] = useState()
-    const [srop, setSROP] = useState()
+    const [srop, setSROP] = useState("")
     const [allHours, setAllHours] = useState()
     const [lectureHours, setLectureHours] = useState()
-    const [sro, setSRO] = useState()
+    const [sro, setSRO] = useState("")
     const [practiceLessons, setPracticeLessons] = useState()
     const [syllabusId, setSyllabusId] = useState(0);
     const navigate=useNavigate();
@@ -47,10 +47,10 @@ const AddStep1 = () => {
         }if (courseNumber === undefined || courseNumber === null) {
             alert("Заполните курс!");
             return;
-        }if (sro === undefined || sro === null) {
+        }if (!sro.trim()) {
             alert("Заполните СРО!");
             return;
-        }if (srop === undefined || srop === null) {
+        }if (!srop.trim()) {
             alert("Заполните СРОП!");
             return;
         }if (practiceLessons === undefined || practiceLessons === null) {
@@ -176,16 +176,16 @@ const AddStep1 = () => {
                             <input 
                                 className='input' 
                                 value={sro}
-                                onChange={e=>setSRO(e.target.valueAsNumber)}
-                                type="number" required/>
+                                onChange={e=>setSRO(e.target.value)}
+                                type="text" required/>
                             <div className='labelline'>CPO</div>
                         </div>
                         <div className='input-box'>
                             <input 
                                 className='input' 
                                 value={srop}
-                                onChange={e=>setSROP(e.target.valueAsNumber)}
-                                type="number" required/>
+                                onChange={e=>setSROP(e.target.value)}
+                                type="text" required/>
                             <div className='labelline'>CPOП</div>
                         </div>
                     </div>

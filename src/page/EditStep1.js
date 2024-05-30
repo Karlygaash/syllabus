@@ -16,8 +16,8 @@ const EditStep1 = () => {
     const [creditNumber, setCreditNumber] = useState()
     const [allHours, setAllHours] = useState()
     const [lectureHours, setLectureHours] = useState()
-    const [sro, setSRO] = useState()
-    const [srop, setSROP] = useState()
+    const [sro, setSRO] = useState("")
+    const [srop, setSROP] = useState("")
     const [practiceLessons, setPracticeLessons] = useState()
     const navigate = useNavigate()
 
@@ -74,10 +74,10 @@ const EditStep1 = () => {
         }if (courseNumber === undefined || courseNumber === null) {
             alert("Заполните курс!");
             return;
-        }if (sro === undefined || sro === null) {
+        }if (!sro.trim()) {
             alert("Заполните СРО!");
             return;
-        }if (srop === undefined || srop === null) {
+        }if (!srop.trim()) {
             alert("Заполните СРОП!");
             return;
         }if (practiceLessons === undefined || practiceLessons === null) {
@@ -210,16 +210,16 @@ const EditStep1 = () => {
                             <input 
                                 className='input' 
                                 value={sro}
-                                onChange={e=>setSRO(e.target.valueAsNumber)}
-                                type="number" required/>
+                                onChange={e=>setSRO(e.target.value)}
+                                type="text" required/>
                             <div className='labelline'>CPO</div>
                         </div>
                         <div className='input-box'>
                             <input 
                                 className='input' 
                                 value={srop}
-                                onChange={e=>setSROP(e.target.valueAsNumber)}
-                                type="number" required/>
+                                onChange={e=>setSROP(e.target.value)}
+                                type="text" required/>
                             <div className='labelline'>CPOП</div>
                         </div>
                     </div>

@@ -143,7 +143,7 @@ const EditQuestions = () => {
                 </div>
                 <div className='add__container-buttons'>
                     <button onClick={()=>putCreateSyllabus()} className="save__button">Сохранить</button>
-                    <button onClick={()=>navigate(`/${syllabusId}/edit/step5`)} className='further__button'>Далее</button>
+                    <button onClick={()=>navigate(`/${syllabusId}/edit/step6`)} className='further__button'>Далее</button>
                     <Link to={`/${syllabusId}`}><button className='cancel__button'>Отмена</button></Link>
                 </div>
             </div>
