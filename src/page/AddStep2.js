@@ -15,6 +15,9 @@ const AddStep2 = () => {
     const [fullName3, setFullName3] = useState("")
     const [fullName4, setFullName4] = useState("")
     const [speciality4, setSpeciality4] = useState("")
+    const [protocol1, setProtocol1] = useState()
+    const [protocol2, setProtocol2] = useState()
+    const [protocol3, setProtocol3] = useState()
 
     const [faculty, setFaculty] = useState("")
     const [email, setEmail] = useState("")
@@ -29,6 +32,10 @@ const AddStep2 = () => {
     const [day2, setDay2] = useState('');
     const [month2, setMonth2] = useState('');
     const [year2, setYear2] = useState('');
+    const [date3, setDate3] = useState('');
+    const [day3, setDay3] = useState('');
+    const [month3, setMonth3] = useState('');
+    const [year3, setYear3] = useState('');
 
     const putCreateSyllabus = () => {
         if (!fullName1.trim()) {
@@ -54,7 +61,10 @@ const AddStep2 = () => {
         if (!date2.trim()) {
             alert("Заполните date");
             return;
-        }
+        }if (!date3.trim()) {
+          alert("Заполните date");
+          return;
+      }
         
         const token = localStorage.getItem("s_token")
         axios
@@ -68,8 +78,9 @@ const AddStep2 = () => {
                         consultation,
                         faculty
                     },
-                    "discussion1" : `"${day}" ${month} ${year} года`,
-                    "discussion2" : `"${day2}" ${month2} ${year2} года`,
+                    "discussion1" : `"${day}" ${month} ${year} года, Протокол №${protocol1}`,
+                    "discussion2" : `"${day2}" ${month2} ${year2} года Протокол №${protocol2}`,
+                    "insertedIn" : `№${protocol3} от "${day3}" ${month3} ${year3} г.`,
                     "discussedBy1" : {
                         "fullname" : fullName2,
                     },
@@ -173,6 +184,46 @@ const AddStep2 = () => {
         }
     };
 
+    const handleDateChange3 = (event) => {
+      const inputDate = event.target.value;
+      setDate3(inputDate);
+  
+      if (inputDate) {
+        const [year, month, day] = inputDate.split('-');
+        setDay3(day);
+        if(month=== '01'){
+          setMonth3('января')
+        }else if(month === '02'){
+          setMonth3('февраля')
+        }else if(month === '03'){
+          setMonth3('марта')
+        }else if(month === '04'){
+          setMonth3('апреля')
+        }else if(month === '05'){
+          setMonth3('мая')
+        }else if(month === '06'){
+          setMonth3('июня')
+        }else if(month === '07'){
+          setMonth3('июля')
+        }else if(month === '08'){
+          setMonth3('августа')
+        }else if(month === '09'){
+          setMonth3('сентября')
+        }else if(month === '10'){
+          setMonth3('октября')
+        }else if(month === '11'){
+          setMonth3('ноября')
+        }else if(month === '12'){
+          setMonth3('декабря')
+        }
+        setYear3(year);
+      } else {
+        setDay3('');
+        setMonth3('');
+        setYear3('');
+      }
+  };
+
     return(
         <div className="container">
             <div className="section__navigation">
@@ -243,7 +294,7 @@ const AddStep2 = () => {
                         </div>
                     </div>
                     <h3>2. Обсуждено</h3>
-                    <p className="discussion-p">2.1 На заседании кафедры "Информационные системы"</p>
+                    <p className="discussion-p">2.1 На заседании кафедры "Информационные системы" от</p>
                     <div className='input-box-grid'>
                         <div className='input-box'>
                             <input 
@@ -256,14 +307,23 @@ const AddStep2 = () => {
                         <div className='input-box'>
                             <input 
                                 className='input' 
+                                type="number"
+                                value={protocol1}
+                                onChange={e=>setProtocol1(e.target.valueAsNumber)}
+                                required/>  
+                            <div className='labelline'>Протокол №</div>       
+                        </div>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
                                 type="text"
                                 value={fullName2}
                                 onChange={e=>setFullName2(e.target.value)}
                                 required/>
-                            <div className='labelline'>Полное имя</div>
+                            <div className='labelline'>Полное имя заведующий кафедрой</div>
                         </div>
                     </div>
-                    <p className="discussion-p">2.2 На заседании комиссии по обеспечению качества Технологического факультета</p>
+                    <p className="discussion-p">2.2 На заседании комиссии по обеспечению качества Технологического факультета от</p>
                     <div className='input-box-grid'>
                         <div className='input-box'>
                             <input 
@@ -271,7 +331,16 @@ const AddStep2 = () => {
                                 type="date"
                                 value={date2}
                                 onChange={handleDateChange2}
-                                required/>
+                                required/>  
+                        </div>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                type="number"
+                                value={protocol2}
+                                onChange={e=>setProtocol2(e.target.valueAsNumber)}
+                                required/>  
+                            <div className='labelline'>Протокол №</div>       
                         </div>
                         <div className='input-box'>
                             <input 
@@ -280,7 +349,7 @@ const AddStep2 = () => {
                                 value={fullName3}
                                 onChange={e=>setFullName3(e.target.value)}
                                 required/>
-                            <div className='labelline'>Полное имя</div>
+                            <div className='labelline'>Полное имя председателя</div>
                         </div>
              
                     </div>
@@ -293,7 +362,27 @@ const AddStep2 = () => {
                                 value={fullName4}
                                 onChange={e=>setFullName4(e.target.value)}
                                 required/>
-                            <div className='labelline'>Полное имя</div>
+                            <div className='labelline'>Полное имя декан факультета</div>
+                        </div>
+                    </div>
+                    <p>ВВЕДЕНЫ ВПЕРВЫЕ (Взамен редь. №)</p><br></br>
+                    <div className='input-box-grid'>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                type="number"
+                                value={protocol3}
+                                onChange={e=>setProtocol3(e.target.valueAsNumber)}
+                                required/>
+                            <div className='labelline'>№</div>
+                        </div>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                type="date"
+                                value={date3}
+                                onChange={handleDateChange3}
+                                required/>
                         </div>
                     </div>
                     <div className='add__container-buttons'>

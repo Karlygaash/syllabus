@@ -21,6 +21,8 @@ const OtherSyllabusById = () => {
     const [question1, setQuestions1] = useState([])
     const [question2, setQuestions2] = useState([])
     const [text, setText] = useState({})
+    const [internetSource, setInternetSource] = useState([])
+    const [insertedIn, setInsertedIn] = useState("")
 
     const onButtonClick = (pdf) => {
         const pdfUrl = "http://185.146.1.71/pdf/PDF-generation-project/"+pdf;
@@ -54,6 +56,8 @@ const OtherSyllabusById = () => {
                 setQuestions1(result.data.question1.questions)
                 setQuestions2(result.data.question2.questions)
                 setText(result.data.text)
+                setInternetSource(result.data.literature.internetSource)
+                setInsertedIn(result.data.preface.insertedIn)
 			})
 			.catch(error => {
                 console.log(error)
@@ -118,6 +122,7 @@ const OtherSyllabusById = () => {
                             <p>Председатель ТФ {discussedBy2.fullName}</p>
                             <h4>3. Утверждено</h4>
                             <p>Декан факультета ТФ {confirmedBy.fullName}</p>
+                            <p>ВВЕДЕНЫ ВПЕРВЫЕ (Взамен ред. {insertedIn})</p>
                         </div>
                     }           
                 </div>
@@ -192,14 +197,14 @@ const OtherSyllabusById = () => {
                     <h3 className="syllabus_title">ВОПРОСЫ</h3>
                     <h4>Вопросы к рубежному контролю №1</h4>
                     {question1 === null ? "" :
-                    question1.map(e => (
-                        <p>{e}</p>
+                    question1.map((e,index) => (
+                        <p>{index+1}. {e}</p>
                     ))
                     }           
                     <h4>Вопросы к рубежному контролю №2</h4>
                     {question2 === null ? "" :
-                    question2.map(e => (
-                        <p>{e}</p>
+                    question2.map((e,index) => (
+                        <p>{index+1}. {e}</p>
                     ))
                     }
                 </div>
@@ -208,14 +213,20 @@ const OtherSyllabusById = () => {
                     <h3 className="syllabus_title">ЛИТЕРАТУРА И ИНТЕРНЕТ-РЕСУРСЫ</h3>
                     <h4>1. Основная литература</h4>
                     {mainLiterature === null ? "" :
-                    mainLiterature.map(e => (
-                        <p>{e}</p>
+                    mainLiterature.map((e,index) => (
+                        <p>{index+1}. {(e, index)}</p>
                     ))
                     }           
                     <h4>2. Дополнительная литература</h4>
                     {mainLiterature === null ? "" :
-                    additionalLiterature.map(e => (
-                        <p>{e}</p>
+                    additionalLiterature.map((e, index) => (
+                        <p>{index+1}. {e}</p>
+                    ))
+                    }
+                    <h4>3. Интернет ресурсы</h4>
+                    {internetSource === null ? "" :
+                    internetSource.map((e,index) => (
+                        <p>{index+1}. {e}</p>
                     ))
                     }
                 </div>

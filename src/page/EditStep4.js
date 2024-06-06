@@ -14,6 +14,7 @@ const EditStep4 = () => {
     const {syllabusId} = useParams()
     const [mainLiterature, setMainLiterature] = useState([""])
     const [additionalLiterature, setAdditionalLiterature] =useState([""])
+    const [resources, setResources] = useState([""])
     
     const UpdateStateMain = (index) => (e)=> {
         const newArray = [...mainLiterature]
@@ -51,13 +52,32 @@ const EditStep4 = () => {
         setAdditionalLiterature(newArray)
     }
 
+    const UpdateState1 = (index) => (e)=> {
+        const newArray = [...resources]
+        newArray[index]=e.target.value
+        setResources(newArray)
+    }
+
+    const Delete1 = (index) => {
+        const newArray = [...resources]
+        newArray.splice(index, 1)
+        setResources(newArray)
+    }
+
+    const AddResources = () => {
+        const newArray = [...resources]
+        newArray.push("")
+        setResources(newArray)
+    }
+
     const putCreateSyllabus = () => {
         const token = localStorage.getItem("s_token")
         axios
             .put(`http://185.146.1.71/pdf/syllabus/literature/${syllabusId}`, {
                 "literature": {
                     additionalLiterature,
-                    mainLiterature
+                    mainLiterature,
+                    "internetSource" : resources
                 }
             }, {
 				headers: {
@@ -83,6 +103,7 @@ const EditStep4 = () => {
 			.then(result => {
                 setMainLiterature(result.data.literature.mainLiterature)
                 setAdditionalLiterature(result.data.literature.additionalLiterature)
+                setResources(result.data.literature.internetSource)
 			})
 			.catch(error => {
                 console.log(error)
@@ -140,6 +161,24 @@ const EditStep4 = () => {
                     </div>
                     ))}
                     <p onClick={()=>AddAdditionalLiterature()} className="add_to__module">Добавить дополнительную литературу</p>
+                    <div className="line"></div>
+
+                    <h3>3. Интернет ресурсы</h3>
+                    {resources.map((e, index) => (
+                    <div className="step2__input">
+                        <div className='input-box'>
+                            <input
+                                className='input' 
+                                type="text"
+                                value={e}
+                                onChange={UpdateState1(index)}
+                                required/>
+                            <div className='labelline'>{index+1}</div>
+                        </div>
+                        <img onClick={()=>Delete1(index)} src={DeleteIcon} alt=""/>
+                    </div>
+                    ))}
+                    <p onClick={()=>AddResources()} className="add_to__module">Добавить интернет ресурсы</p>
                     <div className='add__container-buttons'>
                         <button onClick={()=>putCreateSyllabus()} className='further__button'>Сохранить</button>
                         <Link to={`/${syllabusId}`}><button className='cancel__button'>Отмена</button></Link>

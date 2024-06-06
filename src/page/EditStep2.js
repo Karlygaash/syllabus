@@ -19,7 +19,7 @@ const EditStep2 = () => {
     const [fullName4, setFullName4] = useState("")
     const [discussion1, setDiscussion1] = useState("")
     const [discussion2, setDiscussion2] = useState("")
-
+    const [insertedIn, setInsertedIn] = useState("")
     const [faculty, setFaculty] = useState("")
     const [email, setEmail] = useState("")
     const [address, setAddress] = useState("")
@@ -58,6 +58,7 @@ const EditStep2 = () => {
                     },
                     discussion1,
                     discussion2,
+                    insertedIn,
                     "discussedBy1" : {
                         "fullname" : fullName2,
                     },
@@ -101,6 +102,7 @@ const EditStep2 = () => {
                 setConsultation(result.data.preface.madeBy.consultation)
                 setEmail(result.data.preface.madeBy.email)
                 setFaculty(result.data.preface.madeBy.faculty)
+                setInsertedIn(result.data.preface.insertedIn)
 			})
 			.catch(error => {
                 console.log(error)
@@ -235,7 +237,18 @@ const EditStep2 = () => {
                                 required/>
                             <div className='labelline'>Полное имя</div>
                         </div>
-                    
+                    <p>ВВЕДЕНЫ ВПЕРВЫЕ (Взамен редь. №)</p><br></br>
+                    <div className='input-box-grid'>
+                        <div className='input-box'>
+                            <input 
+                                className='input' 
+                                type="text"
+                                value={insertedIn}
+                                onChange={e=>setInsertedIn(e.target.value)}
+                                required/>
+                            <div className='labelline'>№</div>
+                        </div>
+                    </div>
                     <div className='add__container-buttons'>
                         <button onClick={()=>putCreateSyllabus()} className="save__button">Сохранить</button>
                         <button onClick={()=>navigate(`/${syllabusId}/edit/step3`)} className='further__button'>Далее</button>
